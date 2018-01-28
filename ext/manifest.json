@@ -1,0 +1,27 @@
+{
+  "name": "Fill It In",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Generates values for input fields",
+  "homepage_url": "http://github.com/AussieGuy0/fill-it-in",
+  "default_locale": "en",
+  "permissions": [],
+  "web_accessible_resources": [
+    "images/warning.png"
+  ],
+  "content_scripts": [
+    {
+      "run_at": "document_end",
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ],
+      "css": [
+        "css/styles.css"
+      ]
+    }
+  ]
+}
