@@ -17,7 +17,8 @@
         "https://*/*"
       ],
       "js": [
-        "src/inject/inject.js"
+        "src/inject/ValueGenerator.js",
+        "src/inject/main.js"
       ],
       "css": [
         "css/styles.css"
