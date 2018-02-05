@@ -22,23 +22,46 @@ function main() {
 }
 
 function fillInput(inputElement) {
+    let value = null;
     const type = inputElement.type;
-    if (type != null) {
-        switch (type) {
-            case 'email':
-                inputElement.value = valueGenerator.generateEmail();
-                break;
-            case 'number':
-                inputElement.value = valueGenerator.generateNumber();
-                break;
-            case 'password':
-                inputElement.value = valueGenerator.generatePassword();
-                break;
-            default:
-                inputElement.value = valueGenerator.generateRandomWord();
-        }
+    if (type != null && type !== 'text') {
+        value = generateValueFromType(type);
     } else {
-        inputElement.value = valueGenerator.generateRandomWord();
+        const placeholderValue = inputElement.getAttribute('placeholder');
+        if (placeholderValue.toLowerCase() === 'username') {
+            value = valueGenerator.generateUsername();
+        } else {
+            value = valueGenerator.generateUsername();
+
+        }
+    }
+    inputElement.value = value;
+}
+
+function generateValueFromPlaceholder(placeholder) {
+    switch (placeholder) {
+        case 'username':
+            return valueGenerator.generateUsername();
+            break;
+        default:
+            return valueGenerator.generateRandomWord();
+
+    }
+}
+
+function generateValueFromType(type) {
+    switch (type) {
+        case 'email':
+            return valueGenerator.generateEmail();
+            break;
+        case 'number':
+            return valueGenerator.generateNumber();
+            break;
+        case 'password':
+            return valueGenerator.generatePassword();
+            break;
+        default:
+            return valueGenerator.generateRandomWord();
     }
 }
 
