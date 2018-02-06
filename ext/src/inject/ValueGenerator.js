@@ -27,11 +27,12 @@ class DataSource {
 }
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-const militaryAlphabet = ['alpha', 'bravo', 'charlie', 'delta', 'echo', 'foxtrot', 'golf']; //TODO
-const domains = ["gmail.com", "yahoo.com", "hotmail.com"];
+const domains = ["gmail.com", "yahoo.com", "hotmail.com", "example.com"];
 
+const millitaryAlphabet = new DataSource('millitaryAlphabet.com');
 const adjectives = new DataSource('adjectives.txt');
 const animals = new DataSource('animals.txt');
+const maleNames = new DataSource('maleNames.txt');
 
 class ValueGenerator {
 
@@ -63,12 +64,22 @@ class ValueGenerator {
     }
 
     generateRandomWord() {
-        return getRandomElementFromArray(militaryAlphabet);
+        const randNum = Math.random();
+        if (randNum < 0.5) {
+            return this.generateUsername();
+        } else {
+            return millitaryAlphabet.getValue();
+        }
     }
 
     generateUsername() {
         return adjectives.getValue() + animals.getValue();
     }
+
+    generateFirstName() {
+        return maleNames.getValue();
+    }
+
 
     getRandomLetter() {
         return alphabet.charAt(this.generateNumber(alphabet.length));

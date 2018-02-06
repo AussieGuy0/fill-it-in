@@ -28,24 +28,18 @@ function fillInput(inputElement) {
         value = generateValueFromType(type);
     } else {
         const placeholderValue = inputElement.getAttribute('placeholder');
-        if (placeholderValue.toLowerCase() === 'username') {
-            value = valueGenerator.generateUsername();
-        } else {
-            value = valueGenerator.generateUsername();
-
-        }
+        value = generateValueFromPlaceholder(placeholderValue);
     }
     inputElement.value = value;
 }
 
 function generateValueFromPlaceholder(placeholder) {
-    switch (placeholder) {
-        case 'username':
-            return valueGenerator.generateUsername();
-            break;
-        default:
-            return valueGenerator.generateRandomWord();
-
+    if (placeholder === 'username') {
+        return valueGenerator.generateUsername();
+    } else if (placeholder.indexOf('name') > -1) {
+        return valueGenerator.generateFirstName();
+    } else {
+        return valueGenerator.generateRandomWord();
     }
 }
 
