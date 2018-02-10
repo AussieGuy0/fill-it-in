@@ -29,7 +29,7 @@ class DataSource {
 const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 const domains = ["gmail.com", "yahoo.com", "hotmail.com", "example.com"];
 
-const millitaryAlphabet = new DataSource('millitaryAlphabet.com');
+const millitaryAlphabet = new DataSource('millitaryAlphabet.txt');
 const adjectives = new DataSource('adjectives.txt');
 const animals = new DataSource('animals.txt');
 const maleNames = new DataSource('maleNames.txt');

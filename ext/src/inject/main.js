@@ -10,15 +10,20 @@ const valueGenerator  = new ValueGenerator();
 
 
 function main() {
-    const inputElements = document.querySelectorAll('input');
-    inputElements.forEach((inputElement) => {
-        inputElement.addEventListener("keyup", (event) => {
-            if (event.keyCode === altKeyCode) {
-                fillInput(inputElement)
-            }
-        })
+    const body = document.body;
+    body.addEventListener('keyup', (event) => {
+        const element = event.srcElement;
+        const elementName = element.localName;
+        if (event.keyCode === altKeyCode) {
+            if (elementName === 'input') {
+                fillInput(element);
+            } else if (elementName === 'textarea') {
+                element.value = valueGenerator.generateRandomWord();
 
-    })
+            }
+        }
+
+    });
 }
 
 function fillInput(inputElement) {
